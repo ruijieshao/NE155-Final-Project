@@ -1,4 +1,4 @@
-function [n,hx,hy,tolerance,D,sigma,S]=file_reader(filename)
+function [n,hx,hy,tolerance,D,sigma,S]=file_input(filename)
 format long
 fID=fopen(filename,'r');
 file=fscanf(fID,'%f');
