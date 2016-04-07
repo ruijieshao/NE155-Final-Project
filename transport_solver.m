@@ -14,7 +14,23 @@ for i=1:n-1
         Ab(i,j)=-(D(i,j)+D(i+1,j))*hy/(2*hx);
         At(i,j)=-(D(i,j+1)+D(i+1,j+1))*hy/(2*hx);
         Ac(i,j)=sigma(i,j)-(Al(i,j)+Ar(i,j)+At(i,j)+Ab(i,j));
-    end
+    end   
+end
+
+%BOUNDARY CONDITIONS
+
+for i=1:n-1
+    Ac(i,1)=1;
+    Ar(i,1)=0;
+    At(i,1)=0;
+    Ab(i,1)=0;
+    S(i,1)=0.3*S(i,1);
+    Ac(1,i)=1;
+    Ar(1,i)=0;
+    At(1,i)=0;
+    Al(1,i)=0;
+    S(1,i)=0.3*S(1,i);
+        
     Al(i,n)=-D(i,n)*hy/(2*hx);
     Ar(i,n)=-D(i+1,n)*hy/(2*hx);
     At(i,n)=0;
@@ -24,6 +40,9 @@ for i=1:n-1
     Ar(n,i)=0;
     Ac(n,i)=sigma(n,i)-(Al(n,i)+Ar(n,i)+At(n,i)+Ab(n,i));
 end
+
+%CORNER CONDITIONS
+    
 At(n,n)=0;
 Ac(n,n)=sigma(n,n)-(Al(n,n)+Ar(n,n)+At(n,n)+Ab(n,n));
 

@@ -1,5 +1,5 @@
-function file_output(phi,n)
-fID=fopen('outputdata.txt','w');
+function file_output(phi,n,file_out)
+fID=fopen(file_out,'w');
 
 for i=1:n
     for j=1:n-1
