@@ -20,17 +20,16 @@ end
 %BOUNDARY CONDITIONS
 
 for i=1:n-1
-    Ac(i,1)=1;
     Ar(i,1)=0;
     At(i,1)=0;
     Ab(i,1)=0;
-    S(i,1)=0.3*S(i,1);
-    Ac(1,i)=1;
+    Ac(i,1)=S(i,1)-Al(i,1);
+    
     Ar(1,i)=0;
     At(1,i)=0;
     Al(1,i)=0;
-    S(1,i)=0.3*S(1,i);
-        
+    Ac(1,i)=S(1,i)-Ab(1,i);
+   
     Al(i,n)=-D(i,n)*hy/(2*hx);
     Ar(i,n)=-D(i+1,n)*hy/(2*hx);
     At(i,n)=0;
@@ -42,6 +41,12 @@ for i=1:n-1
 end
 
 %CORNER CONDITIONS
+    
+Ar(1,1)=0;
+At(1,1)=0;
+Al(1,1)=-(D(1,1)+D(1,2))*hy/(2*hx);
+Ab(1,1)=-(D(1,1)+D(2,1))*hy/(2*hx);
+Ac(1,1)=S(1,1)-Ab(1,1)-Al(1,1);
     
 At(n,n)=0;
 Ac(n,n)=sigma(n,n)-(Al(n,n)+Ar(n,n)+At(n,n)+Ab(n,n));
@@ -68,6 +73,7 @@ for i=1:n
 end
 
 %SUCCESSIVE OVER-RELAXATION SOLVER
+
 phi=zeros(n^2,1);
 phiprev=phi;
 tol=intmax;
@@ -92,6 +98,6 @@ for i=1:n
         z(i,j)=phi(n*(i-1)+j);
     end
 end
-surf(x,y,z);
 phi=z;
+surf(x,y,phi);
 end
