@@ -1,4 +1,4 @@
-function phi=transport_solver(n,hx,hy,D,sigma,S,tolerance)
+function phi=diffusion_solver(n,hx,hy,D,sigma,S,tolerance)
 
 %FINDING VALUES FOR 5-POINT DIFFERENCE
 
@@ -22,13 +22,13 @@ end
 for i=1:n-1
     Ar(i,1)=0;
     At(i,1)=0;
-    Ab(i,1)=0;
-    Ac(i,1)=S(i,1)-Al(i,1);
+    Al(i,1)=0;
+    Ac(i,1)=S(i,1)-Ab(i,1);
     
     Ar(1,i)=0;
     At(1,i)=0;
-    Al(1,i)=0;
-    Ac(1,i)=S(1,i)-Ab(1,i);
+    Ab(1,i)=0;
+    Ac(1,i)=S(1,i)-Al(1,i);
    
     Al(i,n)=-D(i,n)*hy/(2*hx);
     Ar(i,n)=-D(i+1,n)*hy/(2*hx);
@@ -70,6 +70,8 @@ for i=1:n
             A(j+n*(i),j+n*(i-1))=Ab(i,j);
         end
     end
+    s(i)=0.5*S(1,i);
+    s(n*(i-1)+1)=0.5*S(i,1);
 end
 
 %SUCCESSIVE OVER-RELAXATION SOLVER
