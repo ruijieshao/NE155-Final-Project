@@ -6,10 +6,10 @@ It requires two inputs. The first should be a file name where the code reads the
 
 The input file should contain the following in the exact order:
 
--n, size of matrix
--delta, cell width
--epsilon, cell height
--varepsilon, iterative tolerance
--D, nxn matrix of diffusion coefficients
--Sigma_a, nxn matrix of cross sections
--S, nxn matrix of source values
+*n, size of matrix
+*delta, cell width
+*epsilon, cell height
+*varepsilon, iterative tolerance
+*D, nxn matrix of diffusion coefficients
+*Sigma_a, nxn matrix of cross sections
+*S, nxn matrix of source values
