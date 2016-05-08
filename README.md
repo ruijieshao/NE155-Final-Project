@@ -1,3 +1,5 @@
+\documentclass{article}
+\begin{document}
 # NE155-Final-Project
 
 This code is designed to solve diffusion equations in two dimensions.
@@ -11,5 +13,7 @@ The input file should contain the following in the exact order:
 - epsilon, cell height  
 - varepsilon, iterative tolerance  
 - D, nxn matrix of diffusion coefficients  
-- Sigma_a, nxn matrix of cross sections  
+- \sigma, nxn matrix of cross sections  
 - S, nxn matrix of source values  
+
+\end{document}
